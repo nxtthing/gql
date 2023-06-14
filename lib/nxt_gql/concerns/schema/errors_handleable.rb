@@ -27,7 +27,7 @@ module NxtGql
           end
 
           rescue_from(::StandardError) do |exp, _obj, _args, ctx, _field|
-            ErrorsHandleable.notify_sentry(exp, ctx)
+            notify_sentry(exp, ctx)
 
             raise exp if ctx[:async]
 
