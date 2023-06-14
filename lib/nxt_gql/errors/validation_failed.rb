@@ -1,4 +1,4 @@
-require "base_error"
+require "nxt_gql/errors/base_error"
 
 module NxtGql
   module Errors

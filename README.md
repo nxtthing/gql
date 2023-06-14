@@ -1,1 +1,1 @@
-`gem "nxt_gql_concerns", github: "nxtthing/gql-concerns"`
+`gem "nxt_gql", github: "nxtthing/gql"`

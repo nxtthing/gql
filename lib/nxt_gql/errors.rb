@@ -1,5 +1,5 @@
-require "errors/base_error"
-require "errors/validation_failed"
+require "nxt_gql/errors/base_error"
+require "nxt_gql/errors/validation_failed"
 
 module NxtGql
   module Errors
