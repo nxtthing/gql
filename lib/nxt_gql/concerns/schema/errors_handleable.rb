@@ -27,9 +27,7 @@ module NxtGql
           end
 
           rescue_from(::StandardError) do |exp, _obj, _args, ctx, _field|
-            Sentry.capture_exception(exp, contexts: { "grapql-ruby" => {
-              query: ctx.query.query_string, variables: ctx.query.variables.to_h, context: ctx.to_h
-            } })
+            ErrorsHandleable.notify_sentry(exp, ctx)
 
             raise exp if ctx[:async]
 
@@ -40,9 +38,8 @@ module NxtGql
         end
 
         class_methods do
-          # GraphQL-Ruby calls this when something goes wrong while running a query:
-          def type_error(exp, ctx)
-            Sentry.capture_exception(
+          def notify_sentry(exp, ctx)
+            ::Sentry.capture_exception(
               exp,
               contexts: {
                 "grapql-ruby" => {
@@ -52,6 +49,11 @@ module NxtGql
                 }
               }
             )
+          end
+
+          # GraphQL-Ruby calls this when something goes wrong while running a query:
+          def type_error(exp, ctx)
+            notify_sentry(exp, ctx)
             super
           end
         end
