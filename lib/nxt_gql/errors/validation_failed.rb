@@ -1,8 +1,8 @@
-require "nxt_gql/errors/base_error"
+require "nxt_gql/errors/base"
 
 module NxtGql
   module Errors
-    class ValidationFailed < BaseError
+    class ValidationFailed < Base
       CODE = 422
       DEFAULT_MESSAGE = "Failed to execute. Please enter valid values and try again.".freeze
 

@@ -1,6 +1,6 @@
 module NxtGql
   module Errors
-    class BaseError < ::StandardError
+    class Base < ::StandardError
       attr_reader :code, :extra
 
       def initialize(code, message, extra = {})

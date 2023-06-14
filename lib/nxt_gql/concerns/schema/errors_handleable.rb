@@ -5,7 +5,7 @@ module NxtGql
         extend ActiveSupport::Concern
 
         included do
-          rescue_from(NxtGql::Errors::BaseError) do |exp, _obj, _args, ctx, _field|
+          rescue_from(NxtGql::Errors::Base) do |exp, _obj, _args, ctx, _field|
             raise exp if ctx[:async]
 
             raise GraphQL::ExecutionError.new(exp.message, extensions: { code: exp.code, **exp.extra })
