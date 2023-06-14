@@ -1,10 +1,12 @@
 Gem::Specification.new do |s|
-  s.name        = "nxt_gql_concerns"
-  s.summary     = "NxtGqlConcerns"
-  s.version     = "0.0.2"
+  s.name        = "nxt_gql"
+  s.summary     = "NxtGql"
+  s.version     = "0.0.1"
   s.authors     = ["Aliaksandr Yakubenka"]
   s.email       = "alexandr.yakubenko@startdatelabs.com"
-  s.files       = ["lib/nxt_gql_concerns.rb"]
+  s.files       = ["lib/nxt_gql.rb"]
   s.license       = "MIT"
   s.add_dependency "activesupport"
+  s.add_dependency "graphql-ruby"
+  s.add_dependency "sentry-ruby"
 end
