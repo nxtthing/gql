@@ -1,3 +1,5 @@
+require "action_policy"
+
 module NxtGql
   module Concerns
     module Schema
