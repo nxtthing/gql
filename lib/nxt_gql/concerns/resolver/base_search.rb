@@ -9,7 +9,9 @@ module NxtGql
               sort_query(sort:, query: q)
             end
           else
-            sort_query(sort:, query:)
+            total = query.count
+            nodes = sort_query(sort:, query:)
+            { nodes:, total: }
           end
         end
 
