@@ -45,9 +45,9 @@ module NxtGql
               exp,
               contexts: {
                 "grapql-ruby" => {
-                  query: ctx.query.query_string,
-                  variables: ctx.query.variables.to_h,
-                  context: ctx.to_h
+                  arguments: ctx.query.variables.to_h,
+                  context: ctx.to_h,
+                  query: ctx.query.query_string
                 }
               }
             )
