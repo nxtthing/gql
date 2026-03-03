@@ -28,13 +28,8 @@ module NxtGql
             )
           end
 
-          rescue_from(ActiveRecord::RecordNotFound) do |exp, _obj, _args, ctx, _field|
-            raise exp if ctx[:async]
-
-            raise GraphQL::ExecutionError.new(
-              exp.message,
-              extensions: { code: 404 }
-            )
+          rescue_from(ActiveRecord::RecordNotFound) do |exp, _obj, _args, _ctx, _field|
+            raise Errors::NotFound, exp.message
           end
 
           rescue_from(::StandardError) do |exp, _obj, _args, ctx, _field|
