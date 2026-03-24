@@ -2,8 +2,9 @@ module NxtGql
   module Concerns
     module Resolver
       module BaseSearch
-        def resolve(filter:, pagination: nil, sort: nil)
-          query = filter.resolve(base_query)
+        def resolve(filter: nil, pagination: nil, sort: nil)
+          query = base_query
+          query = filter.resolve(query) if filter
           if pagination
             pagination.resolve(query) do |q|
               sort_query(sort:, query: q)
