@@ -1,15 +1,18 @@
 module NxtGql
   module Analyzers
     class DuplicateLimit < GraphQL::Analysis::AST::Analyzer
-      MAX_DUPLICATES = 20
+      MAX_DUPLICATES = 25
 
       def initialize(query)
         super
+        @nodes = Set.new
         @fields = Set.new
         @duplicates = 0
       end
 
-      def on_enter_field(_node, _parent, visitor)
+      def on_enter_field(node, _parent, visitor)
+        return unless @nodes.add?(node)
+
         field = [visitor.parent_type_definition, visitor.response_path]
         @duplicates += 1 unless @fields.add?(field)
       end
