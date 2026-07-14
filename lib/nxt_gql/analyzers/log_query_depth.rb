@@ -15,4 +15,3 @@ module NxtGql
     end
   end
 end
-
