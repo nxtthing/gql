@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = "nxt_gql"
   s.summary     = "NxtGql"
-  s.version     = "0.0.12"
+  s.version     = "0.0.13"
   s.authors     = ["Aliaksandr Yakubenka"]
   s.email       = "alexandr.yakubenko@startdatelabs.com"
   s.files       = ["lib/nxt_gql.rb"]
